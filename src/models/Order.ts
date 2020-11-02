@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import User from './User';
 
 @Entity('orders')
 class Order {
@@ -25,6 +28,10 @@ class Order {
 
   @Column()
   pending: boolean;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user_id: User;
 
   @CreateDateColumn()
   created_at: Date;
