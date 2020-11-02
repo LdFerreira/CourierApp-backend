@@ -1,28 +1,14 @@
+import { EntityRepository, Repository } from 'typeorm';
 import Order from '../models/Order';
 
-interface CreateOrderDTO {
-  name: string;
-  url: string;
-  description: string;
-  price: number;
-}
-class OrdersRepository {
-  private orders: Order[];
+@EntityRepository(Order)
+class OrdersRepository extends Repository<Order> {
+  public async findByName(name: string): Promise<Order | null> {
+    const findOrder = await this.findOne({
+      where: { name },
+    });
 
-  constructor() {
-    this.orders = [];
-  }
-
-  public all(): Order[] {
-    return this.orders;
-  }
-
-  public create({ name, url, description, price }: CreateOrderDTO): Order {
-    const order = new Order({ name, url, description, price });
-
-    this.orders.push(order);
-
-    return order;
+    return findOrder || null;
   }
 }
 

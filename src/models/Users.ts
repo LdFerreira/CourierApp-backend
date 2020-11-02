@@ -6,8 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('orders')
-class Order {
+@Entity('users')
+class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -15,10 +15,10 @@ class Order {
   name: string;
 
   @Column()
-  url: string;
+  email: string;
 
   @Column()
-  description: string;
+  password: string;
 
   @Column()
   price: number;
@@ -33,4 +33,4 @@ class Order {
   updated_at: Date;
 }
 
-export default Order;
+export default Users;

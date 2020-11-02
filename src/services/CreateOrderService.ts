@@ -1,3 +1,4 @@
+import { getCustomRepository } from 'typeorm';
 import Order from '../models/Order';
 import OrdersRepository from '../repositories/OrdersRepository';
 
@@ -8,19 +9,28 @@ interface Request {
   price: number;
 }
 class CreateOrderService {
-  private ordersRepository: OrdersRepository;
+  public async execute({
+    name,
+    url,
+    description,
+    price,
+  }: Request): Promise<Order> {
+    const ordersRepository = getCustomRepository(OrdersRepository);
 
-  constructor(ordersRepository: OrdersRepository) {
-    this.ordersRepository = ordersRepository;
-  }
+    const findOrdersInSameName = await ordersRepository.findByName(name);
 
-  public execute({ name, url, description, price }: Request): Order {
-    const order = this.ordersRepository.create({
+    if (findOrdersInSameName) {
+      throw Error('This order is already exist');
+    }
+
+    const order = ordersRepository.create({
       name,
       url,
       description,
       price,
     });
+
+    await ordersRepository.save(order);
 
     return order;
   }

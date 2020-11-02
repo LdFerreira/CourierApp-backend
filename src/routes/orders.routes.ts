@@ -1,24 +1,24 @@
 import { Router } from 'express';
+import { getCustomRepository } from 'typeorm';
 import OrdersRepository from '../repositories/OrdersRepository';
 import CreateOrderService from '../services/CreateOrderService';
 
 const ordersRouter = Router();
 
-const orderRepository = new OrdersRepository();
-
-ordersRouter.get('/', (request, response) => {
-  const orders = orderRepository.all();
+ordersRouter.get('/', async (request, response) => {
+  const orderRepository = getCustomRepository(OrdersRepository);
+  const orders = await orderRepository.find();
 
   return response.json(orders);
 });
 
-ordersRouter.post('/', (request, response) => {
+ordersRouter.post('/', async (request, response) => {
   try {
     const { name, url, description, price } = request.body;
 
-    const createOrder = new CreateOrderService(orderRepository);
+    const createOrder = new CreateOrderService();
 
-    const order = createOrder.execute({ name, url, description, price });
+    const order = await createOrder.execute({ name, url, description, price });
 
     return response.json(order);
   } catch (err) {
