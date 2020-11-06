@@ -40,7 +40,7 @@ O **CourierApp** e uma aplicacao para ajudar na entrega de encomendas
 
 2. Executando a Aplicação:
 
-```sh
+
   # Instalando as dependências do projeto.
   $ yarn # ou npm install
   # Configurando o banco de dados
@@ -51,7 +51,17 @@ O **CourierApp** e uma aplicacao para ajudar na entrega de encomendas
   $ yarn start # ou npm start
 
 ```
+3. Desafio
 
+3.1 Desenvolver uma aplicação que seja web e mobile, responsável por gerenciar um serviço de delivery.
+
+Back-end
+- [x] Incluir, excluir, atualizar e visualizar encomendas.
+- [x] Incluir e visualizar as encomendas cadastrados.
+- [x] Atribuir a um usuário a realização da entrega da encomenda.
+- [x] Visualizar encomendas pendentes de serem entregues, Definir se uma encomenda foi entregue.
+
+- [ ] Login e autentificação de usuario
 
 
 
