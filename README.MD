@@ -43,8 +43,10 @@ O **CourierApp** e uma aplicacao para ajudar na entrega de encomendas
 ```sh
   # Instalando as dependências do projeto.
   $ yarn # ou npm install
-  # Configurando o banco de dados e criando as tabelas.
+  # Configurando o banco de dados
   $ docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+  #Criando as tabelas.
+  $ yarn migration:run
   # Inicie a API
   $ yarn start # ou npm start
 
