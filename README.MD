@@ -36,7 +36,6 @@ O **CourierApp** e uma aplicacao para ajudar na entrega de encomendas
 
 ```sh
   $ git clone https://github.com/LdFerreira/CourierApp-backend
-```
 
 2. Executando a Aplicação:
 
@@ -62,6 +61,7 @@ Back-end
 - [x] Visualizar encomendas pendentes de serem entregues, Definir se uma encomenda foi entregue.
 
 - [ ] Login e autentificação de usuario
+- [ ] Niveis de acesso para diferentes usuarios
 
 
 
