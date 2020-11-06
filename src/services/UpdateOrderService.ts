@@ -23,14 +23,6 @@ class CreateOrderService {
     user_id,
   }: Request): Promise<Order> {
     const ordersRepository = getRepository(Order);
-    const usersRepository = getRepository(User);
-
-    const findUserExists = await usersRepository.findOne({
-      where: { id },
-    });
-    if (findUserExists) {
-      throw Error('This user is not exists');
-    }
 
     const order = ordersRepository.create({
       name,
